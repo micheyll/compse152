@@ -5,7 +5,7 @@ resource "openstack_compute_keypair_v2" "my-cloud-key" {
 
 resource "openstack_compute_instance_v2" "vm-main" {
   name            = "vm-main"
-  image_name      = "Ubuntu-18.04"
+  image_name      = "Ubuntu-24.04"
   flavor_name     = "standard.tiny"
   key_pair        = "${openstack_compute_keypair_v2.my-cloud-key.name}"
   security_groups = [openstack_networking_secgroup_v2.secgroup_1.name]
@@ -17,7 +17,7 @@ resource "openstack_compute_instance_v2" "vm-main" {
 
 resource "openstack_compute_instance_v2" "vm-other" {
   name            = "vm-${count.index}"
-  image_name      = "ubuntu-18.04"
+  image_name      = "ubuntu-24.04"
   flavor_name     = "standard.tiny"
   key_pair        = "${openstack_compute_keypair_v2.my-cloud-key.name}"
   security_groups = [openstack_networking_secgroup_v2.secgroup_2.name]
